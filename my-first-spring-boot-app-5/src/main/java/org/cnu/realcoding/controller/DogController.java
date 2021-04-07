@@ -4,6 +4,7 @@ import org.cnu.realcoding.domain.Dog;
 import org.cnu.realcoding.service.DogManagementService;
 import org.cnu.realcoding.vo.PatchDog;
 import org.cnu.realcoding.vo.PatchDogKind;
+import org.cnu.realcoding.vo.PatchRecords;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,6 +54,11 @@ public class DogController {
     @PatchMapping("/dogs/ModifyDogKind/{name}/{ownerPhoneNumber}/{ownerName}")
     public void ModifyDogKind(@PathVariable String name, @PathVariable String ownerPhoneNumber, @PathVariable String ownerName, @RequestBody PatchDogKind patchDogs){
         dogManagementService.modifyDogKind(name, ownerName, ownerPhoneNumber, patchDogs);
+    }
+
+    @PatchMapping("/dogs/ModifyRecords/{name}/{ownerPhoneNumber}/{ownerName}")
+    public void modifyRecords(@PathVariable String name, @PathVariable String ownerPhoneNumber, @PathVariable String ownerName, @RequestBody PatchRecords patchRecords){
+        dogManagementService.modifyRecords(name, ownerName, ownerPhoneNumber, patchRecords);
     }
 
 }
