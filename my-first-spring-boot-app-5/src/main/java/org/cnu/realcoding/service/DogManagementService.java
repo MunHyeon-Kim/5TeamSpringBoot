@@ -4,6 +4,9 @@ import lombok.Getter;
 import org.cnu.realcoding.domain.Dog;
 import org.cnu.realcoding.exception.DogNotfoundException;
 import org.cnu.realcoding.repository.DogRepository;
+import org.cnu.realcoding.vo.PatchDog;
+import org.cnu.realcoding.vo.PatchDogKind;
+import org.cnu.realcoding.vo.PatchRecords;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,58 +21,11 @@ public class DogManagementService {
 
     public void insertDog(Dog dog) {
         dogRepository.insertDog(dog);
-       // dogs.add(dog);
-    }
-
-
-
-    public Dog getDogByName(String name) {
-//        if(!dogRepository.exists(name)){
-//            throw new DogNotfoundException();
-//        }
-        Dog dog  = dogRepository.findDogByName(name);
-
-        if(dog == null){
-            throw new DogNotfoundException();
-        }
-
-        return dog;
- //       throw new DogNotfoundException();
-    }
-
-    public Dog getDogByOwnerName(String ownerName){
-        Dog dog = dogRepository.findDogByOwnerName(ownerName);
-
-        if(dog == null){
-            throw new DogNotfoundException();
-        }
-
-        return dog;
-
-    }
-
-    public Dog getDogByOwnerPhoneNumber(String ownerPhoneNumber){
-        Dog dog = dogRepository.findDogByOwnerPhoneNumber(ownerPhoneNumber);
-
-        if(dog == null){
-            throw new DogNotfoundException();
-        }
-
-        return dog;
-
-    }
-
-    public Dog getDogByUniqueKey(String name,String ownerName,String ownerPhoneNumber){
-        Dog dog = dogRepository.findDogByUniqueKey(name,ownerName,ownerPhoneNumber);
-
-        if(dog == null){
-            throw new DogNotfoundException();
-        }
-
-        return dog;
+        // dogs.add(dog);
     }
 
     public List<Dog> getAllDogs() {
         return dogRepository.findAllDog();
     }
+
 }
