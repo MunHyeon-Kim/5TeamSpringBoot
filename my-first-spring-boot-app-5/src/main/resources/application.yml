@@ -6,4 +6,4 @@ server:
       mongodb:
         host: localhost
         port: 27017
-        database: realcoding-5
+        database: realcoding-1

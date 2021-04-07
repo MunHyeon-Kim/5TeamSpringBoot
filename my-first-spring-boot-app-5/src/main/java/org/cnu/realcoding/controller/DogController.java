@@ -2,6 +2,9 @@ package org.cnu.realcoding.controller;
 
 import org.cnu.realcoding.domain.Dog;
 import org.cnu.realcoding.service.DogManagementService;
+import org.cnu.realcoding.vo.PatchDog;
+import org.cnu.realcoding.vo.PatchDogKind;
+import org.cnu.realcoding.vo.PatchRecords;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,7 +46,10 @@ public class DogController {
         return dogManagementService.getDogByUniqueKey(name,ownerName,ownerPhoneNumber);
     }
 
-
+    @PutMapping("/dogs/ModifyDog/{name}/{ownerPhoneNumber}/{ownerName}")
+    public void ModifyDog(@PathVariable String name, @PathVariable String ownerPhoneNumber, @PathVariable String ownerName, @RequestBody PatchDog patchDog){
+        dogManagementService.modifyDog(name, ownerName, ownerPhoneNumber, patchDog);
+    }
 
 
 }
