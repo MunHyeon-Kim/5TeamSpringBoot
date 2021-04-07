@@ -28,4 +28,20 @@ public class DogController {
     public List<Dog> getDogByName(@PathVariable String name){
         return dogManagementService.getDogByName(name);
     }
+
+    @GetMapping("/dogs/phone/{ownerPhoneNumber}")
+    public List<Dog> getDogByownerPhoneNumber(@PathVariable String ownerPhoneNumber){
+        return dogManagementService.getDogByOwnerPhoneNumber(ownerPhoneNumber);
+    }
+    @GetMapping("/dogs/ownerName/{ownerName}")
+    public List<Dog> getDogByownerName(@PathVariable String ownerName){
+        return dogManagementService.getDogByOwnerName(ownerName);
+    }
+
+
+
+
+
+
+
 }
