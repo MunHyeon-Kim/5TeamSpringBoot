@@ -1,9 +1,9 @@
 server:
-  port: 8006
+  port: 8005
 
-spring:
-  data:
-    mongodb:
-      host: 192.168.123.107
-      port: 27017
-      database: realcoding-5
+  spring:
+    data:
+      mongodb:
+        host: localhost
+        port: 27017
+        database: realcoding-1
