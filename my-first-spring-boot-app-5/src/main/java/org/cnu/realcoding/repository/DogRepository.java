@@ -1,12 +1,10 @@
 package org.cnu.realcoding.repository;
 
-import ch.qos.logback.classic.Logger;
 import org.cnu.realcoding.domain.Dog;
 import org.cnu.realcoding.exception.DogNotfoundException;
 import org.cnu.realcoding.exception.DogfoundException;
 import org.cnu.realcoding.vo.PatchDog;
 import org.cnu.realcoding.vo.PatchDogKind;
-import org.cnu.realcoding.vo.PatchRecords;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -14,7 +12,6 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -110,6 +107,20 @@ public class DogRepository {
             }
             if (patchDog.getOwnerPhoneNumber() != null) {
                 update.set("ownerPhoneNumber", patchDog.getOwnerPhoneNumber());
+            }
+            mongoTemplate.updateFirst(query, update, Dog.class);
+        }
+    }
+
+    public void modifyDogKind(String name, String ownerName, String ownerPhoneNumber, PatchDogKind patchDogs) {
+        if(exists(name,ownerName,ownerPhoneNumber)) {
+            Query query = new Query();
+            Update update = new Update();
+            query.addCriteria(Criteria.where("name").is(name));
+            query.addCriteria(Criteria.where("ownerName").is(ownerName));
+            query.addCriteria(Criteria.where("ownerPhoneNumber").is(ownerPhoneNumber));
+            if (patchDogs.getKind() != null) {
+                update.set("kind", patchDogs.getKind());
             }
             mongoTemplate.updateFirst(query, update, Dog.class);
         }
