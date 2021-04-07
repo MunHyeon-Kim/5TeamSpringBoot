@@ -12,10 +12,9 @@ import java.util.List;
 public class Dog {
     private String name;
     private String kind;
-    private String owenerName;
-    private String owenerPhoneNumber;
+    private String ownerName;
+    private String ownerPhoneNumber;
     private List<String> medicalRecords;
-    private int age;
+
+
 }
-
-
