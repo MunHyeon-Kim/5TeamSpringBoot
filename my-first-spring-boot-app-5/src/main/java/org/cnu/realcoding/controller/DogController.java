@@ -38,8 +38,10 @@ public class DogController {
         return dogManagementService.getDogByOwnerName(ownerName);
     }
 
-
-
+    @GetMapping("/dogs/uniqueKey/{name}/{ownerPhoneNumber}/{ownerName}")
+    public Dog getDogByUniqueKey(@PathVariable String name, @PathVariable String ownerPhoneNumber, @PathVariable String ownerName){
+        return dogManagementService.getDogByUniqueKey(name,ownerName,ownerPhoneNumber);
+    }
 
 
 
