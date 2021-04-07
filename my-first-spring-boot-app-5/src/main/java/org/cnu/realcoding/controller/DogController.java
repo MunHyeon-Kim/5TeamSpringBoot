@@ -2,7 +2,6 @@ package org.cnu.realcoding.controller;
 
 import org.cnu.realcoding.domain.Dog;
 import org.cnu.realcoding.service.DogManagementService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,5 +23,9 @@ public class DogController {
         return dogManagementService.getAllDogs();
     }
 
-
+    // localhost:8005/dogs/ian
+    @GetMapping("/dogs/name/{name}")
+    public List<Dog> getDogByName(@PathVariable String name){
+        return dogManagementService.getDogByName(name);
+    }
 }
