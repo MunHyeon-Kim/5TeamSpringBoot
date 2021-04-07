@@ -4,6 +4,9 @@ import lombok.Getter;
 import org.cnu.realcoding.domain.Dog;
 import org.cnu.realcoding.exception.DogNotfoundException;
 import org.cnu.realcoding.repository.DogRepository;
+import org.cnu.realcoding.vo.PatchDog;
+import org.cnu.realcoding.vo.PatchDogKind;
+import org.cnu.realcoding.vo.PatchRecords;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -74,6 +77,8 @@ public class DogManagementService {
     }
 
 
-
+    public void modifyDog(String name, String ownerName, String ownerPhoneNumber, PatchDog patchDog) {
+        dogRepository.modifyDog(name,ownerName,ownerPhoneNumber, patchDog);
+    }
 
 }
